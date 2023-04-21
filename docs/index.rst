@@ -1,30 +1,20 @@
-.. TEMP-changeme documentation master file, created by
-   sphinx-quickstart on Thu Apr  6 20:44:57 2023.
+.. this Python Tutorial documentation master file, created by
+   sphinx-quickstart on Thu Apr 20 20:24:07 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TEMP-changeme's documentation!
-=========================================
+Welcome to Ray's Python Tutorial's documentation!
+=================================================
 
-   :Date: |today|
-   :Author: **Ray Heil** <heilray@grinnell.edu>
+:Author: Ray Heil <heilray@grinnell.edu>
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: Chapters:
    :numbered:
 
-   intro.rst
    getting-started/getting-started.rst
-   file-io/file-io.rst
+   basic-file-io/basic-file-io.rst
+   pandas-read-csv/pandas-read-csv.rst
    plotting-data/plotting-data.rst
 
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

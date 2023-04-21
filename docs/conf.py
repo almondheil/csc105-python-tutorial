@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'TEMP-changeme'
+project = "Ray's Python Tutorial"
 copyright = '2023, Ray Heil'
 author = 'Ray Heil'
 
@@ -23,5 +23,5 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'press'
 html_static_path = ['_static']
