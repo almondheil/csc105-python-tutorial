@@ -14,7 +14,7 @@ Before we start, we'll want to create a couple of files. In your replit, make a 
 Then, make a new file called simple-data.csv. In it, paste in the following
 text which represents the stock of some warehouse.
 
-.. literalinclude:: simple-data.csv
+.. literalinclude:: code/simple-data.csv
 
 This data is in something called "Comma Separated Value (CSV)" format. You're
 probabily familiar with it if you've taken a science course here before, but if

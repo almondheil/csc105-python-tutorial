@@ -13,8 +13,8 @@ Welcome to Ray's Python Tutorial's documentation!
    :caption: Chapters:
    :numbered:
 
-   getting-started/getting-started.rst
-   basic-file-io/basic-file-io.rst
-   pandas-read-csv/pandas-read-csv.rst
-   plotting-data/plotting-data.rst
+   getting-started.rst
+   basic-file-io.rst
+   pandas-read-csv.rst
+   plotting-data.rst
 
