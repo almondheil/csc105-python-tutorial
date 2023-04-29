@@ -20,8 +20,8 @@ familiar with Python's strings and how to break them up into chunks), but for
 our purposes here we'll use the popular library Pandas which can do it (and as a
 bonus, handles unexpected data or whitespace way better than we'll be able to).
 
-First we'll look at what a CSV file is and how it's stored, then we can jump
-into using Pandas to import and work with one.
+First we'll look at what a CSV file is and how it's stored, and then we can jump
+into using Pandas to manipulate them. 
 
 What are CSV Files?
 ===================
@@ -101,19 +101,19 @@ For instance, what if I wanted to see only which evil machines and objects I had
 in stock, but I didn't care about their price or anything else? Then, I could
 select that column like so (assuming pandas was imported at the top of the file):
 
-.. note:: 
-
-   If you're interested in doing more with dataframes, I recommend you start
-   with the `documentation
-   <https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html>`_
-   for ``loc``! It can be really useful, and it works on both rows and columns,
-   but it's out of scope for this project.
-
 .. code-block:: python
 
    def select_column():
     data = pandas.read_csv("my_table.csv")
     print(data["Name"])
+
+.. note:: 
+
+  If you're interested in doing more with dataframes, I recommend you start with
+  the `documentation for the dataframe procedure loc
+  <https://pandas.pydata.org/pandas-docs/stable/reference/pi/pandas.DataFrame.loc.html>`_.
+  It can be really useful and it works on both rows and columns, but it's out of
+  scope for this project and we won't need it to do a basic plot.
 
 Similarly, I could loop over every item in one of those columns like so:
 
@@ -126,3 +126,34 @@ Similarly, I could loop over every item in one of those columns like so:
 
 If you run the updated version of the ``select_column()`` function, you should
 see it print out one line with the data of each row in the CSV.
+
+Using this same format, we could do something like sum up the number of items we
+have in stock in total. I don't know how that could be useful here, but we can
+sure do it!
+
+.. code-block:: python
+
+   def sum_stock():
+        data = pandas.read_csv("my_table.csv")
+        sum = 0
+        for number in data["Number in Stock"]:
+                # Add the int version of that string number to the total sum
+                sum = sum + int(number)
+
+        # Print out the int version of that sum (convert the other direction)
+        print("The total sum of items was " + str(sum))
+
+Tada!!
+
+.. _sec-conclusion:
+
+Conclusion
+==========
+
+Okay, that's everything that we're going to cover having to do with Pandas!
+We've really only brushed the surface of what that library can do, and it's
+great for data manipulation of all sorts. As I mentioned earlier, check out the
+documentation if you want to learn more!
+
+Next up, we're going to concern ourselves with actually plotting the data that
+we've been reading so far.
