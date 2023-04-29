@@ -1,12 +1,21 @@
-.. _chap-plotting-data:
+.. _chap-plotting-data-with-matplotlib:
 
-=============
-Plotting Data
-=============
+=============================
+Plotting Data with Matplotlib
+=============================
 
-.. _sec-setup:
+.. _sec-introduction-and-motivation:
 
-Setup
-=====
+Introduction and Motivation
+===========================
 
-TODO TODO MAKE SECTIONS
+TODO write
+
+TODO middle sections
+
+.. _sec-conclusion:
+
+Conclusion
+==========
+
+TODO write 
