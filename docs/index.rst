@@ -3,15 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Ray's Python Tutorial's documentation!
-=================================================
+Welcome to Ray's Python Tutorial!
+=================================
 
 :Author: Ray Heil <heilray@grinnell.edu>
+:Published Date: |today|
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Chapters:
-   :numbered:
+   :caption: Contents 
 
    getting-started.rst
    basic-file-io.rst
