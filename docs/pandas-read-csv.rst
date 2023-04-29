@@ -1,38 +1,128 @@
-.. _chap-reading-files:
+.. _chap-reading-csv-files-with-pandas:
 
-=============
-Reading Files
-=============
-]
-.. _sec-csv-files:
+=============================
+Reading CSV Files with Pandas
+=============================
 
-CSV Files
-=========
+.. _sec-what-are-csv-files:
 
-Before we start, we'll want to create a couple of files. In your replit, make a new file called `file-io.py`. For now, it will stay empty.
+Introduction and Motivation
+===========================
 
-Then, make a new file called simple-data.csv. In it, paste in the following
-text which represents the stock of some warehouse.
+In the previous chapter we were able to use Python's ``open`` command to
+extract the text from a file and do things with it, but left off without being
+able to read more complex data from a file. For instance, what if we care about
+something more like a spreadsheet, with multiple values per row?
 
-.. literalinclude:: code/simple-data.csv
+For that purpose, we'll turn to code that other people have written. It's
+definitely possible to do all this work yourself (especially if you're more
+familiar with Python's strings and how to break them up into chunks), but for
+our purposes here we'll use the popular library Pandas which can do it (and as a
+bonus, handles unexpected data or whitespace way better than we'll be able to).
 
-This data is in something called "Comma Separated Value (CSV)" format. You're
-probabily familiar with it if you've taken a science course here before, but if
-you're not it can be read as follows:
+First we'll look at what a CSV file is and how it's stored, then we can jump
+into using Pandas to import and work with one.
 
-* The top row represents titles that the data has. Our three fields are "Part
-  Name", "Part Number", and "Number in Stock".
+What are CSV Files?
+===================
 
-* Each row after that contains the data for an item, and each one is separated
-  by commas. For instance, the store has 12 levers and a lever has a part
-  number of 1234.
+A CSV file is one way to store a table in a plain text file, in a format that is
+pretty easy for computers to parse and understand. Here's one example that shows
+the inventory for a hypothetical supervillain supplies store.
 
-One thing that's pretty obvious from looking at it
+.. literalinclude:: code/my_table.csv
+   :language: text 
 
-.. _sec-loading-data-python:
+CSV stands for Comma Separated Values. Basically, each comma represents the
+divider between two rows in a table. The commas in this file don't actually line
+up, since the space between all the words has been compressed to make it more
+computer-friendly. For your convenience, here's the table that this CSV file
+encodes. 
 
-Opening the file in Python
+See how the columns match up?
+
+.. csv-table::
+   :align: left
+   :file: code/my_table.csv
+
+.. _sec-using-pandas-to-read-a-csv:
+
+Using Pandas to read a CSV
 ==========================
 
-TODO WRITE
+First, you'll want to make a CSV file of your own. You can copy the one from the
+code box above, or make up your own. In all the code snippets I'm going to use
+the name ``my_table.csv``, but **if your filename is different you will have to
+adjust that.**
 
+With your CSV file saved in the Replit workspace, create a new Python file and
+name it something like ``dataframes.py``. In that file, enter this starter code. 
+
+.. code-block:: python
+
+  import pandas 
+
+  def read_csv():
+    data = pandas.read_csv("my_table.csv")
+    print(data)
+
+When we call ``pandas.read_csv``, it's opening the file for us automatically and
+creating something out of it called a dataframe. This is essentially Pandas'
+version of a table, with some different features. We won't be using all the
+complicated features of it, just some of the simpler stuff.
+
+When you save and run this code, you'll see a (relatively) pretty display of the
+CSV you made before like this one.
+
+.. code-block:: text
+
+                          Name  Number in Stock     Price
+  0             Big red button               12      3000
+  1         Evil looking chair                1  12000000
+  2            Large spiky hat               32        35
+  3  Robot that kills everyone                0     45000
+  4                Villain car                4     75000
+
+As you can see, it successfully figured out what the different columns were.
+Also, notice the numbers on the side. Those weren't part of our original CSV
+file, but they represent the indices of the rows within the data frame.
+
+.. _sec-selecting-certain-data-from-a-dataframe:
+
+Selecting a Column from a Dataframe 
+===================================
+
+It was easy enough to print the whole data frame, but what if we want to work
+with individual rows or columns? There are a bunch of options Pandas provides to
+do this sort of stuff, but we're going to focus on the one that requires the
+least specialized machinery: Selecting columns.
+
+For instance, what if I wanted to see only which evil machines and objects I had
+in stock, but I didn't care about their price or anything else? Then, I could
+select that column like so (assuming pandas was imported at the top of the file):
+
+.. note:: 
+
+   If you're interested in doing more with dataframes, I recommend you start
+   with the `documentation
+   <https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.loc.html>`_
+   for ``loc``! It can be really useful, and it works on both rows and columns,
+   but it's out of scope for this project.
+
+.. code-block:: python
+
+   def select_column():
+    data = pandas.read_csv("my_table.csv")
+    print(data["Name"])
+
+Similarly, I could loop over every item in one of those columns like so:
+
+.. code-block:: python
+
+   def select_column():
+    data = pandas.read_csv("my_table.csv")
+    for name in data["Name"]:
+      print("The evil store has " + name + " in stock.")
+
+If you run the updated version of the ``select_column()`` function, you should
+see it print out one line with the data of each row in the CSV.

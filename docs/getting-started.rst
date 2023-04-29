@@ -9,51 +9,43 @@ Getting Started
 Introduction
 ============
 
-Welcome to my little tutorial on some fun Python stuff! In this booklike thing
-before you, I'm going to cover how to do a handful of things that extend the
-Python we already learned in class. Here's my big, fancy goal:
+Welcome to my little tutorial on some fun Python stuff! In this webpage-y thing
+before you, I'm going to cover how to do a handful of fun and/or interesting
+things in Python. Specifically, here are the things I want to cover:
 
-When you finish this tutorial, you'll be able to:
+* Reading and writing files using Python's built in tools
 
-* Open a file so Python can read it
+* Using pandas_ to make our data processing easier
 
-* Plot the data in that file
+* Plotting data graphically using matplotlib_ 
 
-* Process data and output it into a different file
+I'm doing my best to aim this tutorial so that it will match up with where we
+left off with Python and data representation, but in doing that I explain a
+handful of things that you already might know for one reason or another.
 
-* Save the plot as an image on your computer
-
-To do that, we're going to take advantage of two Python libraries that do a lot
-of heavy lifting for us already. The first one is matplotlib_, which we'll use
-to graph data, and pandas_, which we'll use to store data in tables as well as
-read and write to files. 
-
-They also do a lot more than we need them to, so if you're curious feel free to
-read more. Also, keep in mind that these libraries aren't the only way to solve
-the problems we're working on here! They are just the ones I chose that happen
-to be well-suited for the job.
-
-That may seem intimidating, and admittedly it's going quite a bit past what we
-handled in class, but I'll do my best to make sure that this is as smooth a
-process as possible.
+Definitely feel free to skip sections as needed! I don't want to bore you if
+I can avoid it.
 
 .. _sec-starting-a-project:
 
 Starting a Project
 ==================
 
-First, go to Replit_ and click the "Create Repl" button. Choose the Python
-template, and give it whatever sort of title you want.
+For our purposes here, we're going to use Replit to run our project. It'll
+handle dependencies for us, and is generally about a million times easier than
+it would be to set up Python on your computer directly. With that said, here's
+how to create a new Repl if you haven't done so already!
+
+#. First, go to Replit_ and click the "Create Repl" button.
+
+#. Choose the Python template, and give it whatever sort of title you want. 
+   Maybe ``totally-amazing-python-tutorial``?
 
 For now we won't create any files, as I'll have you use a different file for
 each upcoming section to keep everything a little organized.
 
-Replit already has all the packages that we need installed, so there shouldn't
-be any hassle on that front. If it becomes an issue, I can try to help
-troubleshoot! But with any luck, Replit will be much easier to use than anything
-we could try to do directly on your computer.
-
-Now, you should be all set up to start reading files in Python!
+Now, you should be all set up to start reading files in Python! Move onto the
+next section to jump into how we can start off with file I/O.
 
 .. _matplotlib: https://matplotlib.org/
 

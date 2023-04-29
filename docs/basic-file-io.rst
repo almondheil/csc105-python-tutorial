@@ -6,37 +6,23 @@ Basic File I/O
 
 .. _sec-introduction:
 
-Introduction
-============
+Introduction and Motivation
+===========================
 
-In this chaoter, we're going to cover how we can take input and put output into
+In this chapter, we're going to cover how we can take input and put output into
 files instead of just using input and print to do those things in the terminal.
 This concept is also known as file I/O.
 
-To start off, we'll go over why we actually want to use file I/O. Then, we'll
-go through a couple short examples: reading text from a file that's already
-written and writing text into a file to change it. Finally, we'll cover why
-this method can be a little frustrating to motivate our next steps with more
-libraries written by other people.
+So, why would we ever want to do file I/O? It can be useful when we have a lot
+of data (say, from the measuring device you use in lab) to enter into our
+program and don't want to enter it every time, or when we want to run something
+a bunch of times and not type the same thing every time.
 
-.. _sec-fileio-motivation:
-
-Motivation
-==========
-
-Have you ever felt like it was tedious to type in the same thing each time you
-ran a function and asked for user input? It can make sense to ask for input when
-it'll be a different result every time you run the file, but sometimes you'd
-rather store your input somewhere else. 
-
-That can help you especially if you need to run the code several times and need
-the same input every time, or if there is so much input (like data from a
-study) that you'd never want to type all of it in manually.
-
-On the side of file output, it can be really nice to put the results of your
-program into a file where you can read them later, instead of printing them out
-and risking losing your work if you don't use it immediately. With those
-reasons stated, let's jump into how to handle those things from Python!
+On the side of writing to files specifically, it can be really nice to put the
+results of your program into a file where you can read them later, instead of
+printing them out and risking losing your work if you don't use it immediately.
+Similarly, if you ever run a complex program you might want it to report errors
+to a file where you can check them later and figure out why it broke.
 
 .. _sec-reading-a-file:
 
@@ -44,10 +30,10 @@ Reading a File
 ==============
 
 To start off, make a new file in your Replit and name it something like
-``plaintext-data.txt``. As shown in the file extension, this file is meant to hold
-normal text with no fancy formatting. Then, just enter some sort of data into
-the file, to make it look like a list of things with one item on each line. I've
-made mine a list of fake emotions.
+``plaintext-data.txt``. As shown in the file extension, this file is meant to
+hold normal text with no fancy formatting. Then, just enter some sort of data
+into the file, to make it look like a list of things with one item on each line.
+I've made mine a list of fake emotions.
 
 .. literalinclude:: code/plaintext_data.txt 
 
@@ -63,19 +49,23 @@ There are a few things to unpack with this short function, especially on line 3.
 There are two new pieces of syntax that this line alone introduces, so I'll
 break them down below from the center of the statement outwards:
 
-#. At the center of the statement is ``open("plaintext_data.txt", "r")``. This
-   snippet tells Python to open up the file by searching for its filename, and
-   the ``"r"`` tells it to open the file for reading, which will stop us from
-   accidentally modifying what's inside.
+* At the center of the statement is ``open("plaintext_data.txt", "r")``. This
+  snippet tells Python to open up the file by searching for its filename, and
+  the ``"r"`` tells it to open the file for reading, which will stop us from
+  accidentally modifying what's inside.
 
-#. The next layer out is the ``with ... as file:`` block that we're creating. I
-   find it most helpful to think of this instruction running the command in the
-   middle, and assigning its result to the variable name ``file``. We could
-   also do this differently by entering ``file = open("plaintext_data.txt",
-   "r")``, but the benefit of the method I'm using here is that Python will
-   automatically close the file when we are done using it. If the file never
-   gets closed, there's a (small but existent) chance that the file will become
-   corrupted.
+* The next layer out is the ``with ... as file:`` block that we're creating. I
+  find it most helpful to think of this instruction running the command in the
+  middle, and assigning its result to the variable name ``file``. We could also
+  do this differently by writing ``file = open("plaintext_data.txt", "r")``, but
+  the benefit of the method I'm using here is that Python will automatically
+  close the file when we are done using it. 
+
+.. note:: 
+   If we never close the file (either manually or letting Python do it), there's
+   a small chance that the file can become corrupted because some of the
+   metadata will not get saved properly. This is much less common on modern
+   computers than it was a few years ago, but it's still worth being safe about.
 
 Then, inside the with block on line 7, we have the expression
 ``lines = file.readlines()``. As you can probably guess from the method name,
@@ -131,14 +121,60 @@ Writing to a File
 
 Next, let's practice opening a file so we can write data to it. Go ahead and
 make a new function in your existing file, and call this one something like
-``write_to_file()``. Here's a start for what that might look like.
+``write_to_file()``. For now, feel free to copy down this code block below. 
 
-.. literalinclude:: code/writing_text_0.py 
+.. literalinclude:: code/writing_text.py 
    :language: python 
 
+So, what is this one actually doing? The first thing to notice is that we're
+opening a file using a ``with ... as`` expression like we did before, but this
+time we use the parameter ``"w"`` instead of ``"r"``. That means that Python
+will open the file for writing, or create it if it does not exist. Be careful,
+because it also clears the file if it already does exist! 
 
-.. _sec-difficulties-with-this-method:
+.. note:: 
+   If that's not the behavior you want, you could use ``"a"`` to append to the
+   end of an existing file, or ``"x"`` to create a file if it does not exist but
+   fail if the file is already present. However, for our purposes here we want
+   to overwrite old files. Just make sure not to accidentally save over your
+   code!
 
-Difficulties with this Method
-=============================
+The next thing to notice is the calls inside the function to ``outfile.write``.
+This is quite similar to how we already use print statements, but instead of
+printing into the terminal it essentially prints into the file named
+``outfile``. Also, notice that there is a single ``\n`` character on the end of
+each line. This isn't something that we need to do when printing, but it's
+necessary when we write to a file to make sure the lines advance.
 
+So, what if we want to do something slightly more complicated when we output to
+our file? We've already managed to read from one file, so let's extend our
+previous work in a new function called ``read_and_write()``.
+
+.. literalinclude:: code/read_and_write.py 
+   :language: python 
+
+We've already interacted with all the individual parts of this function, but
+here's a breakdown of what it does anyway.
+
+* We open a file called ``infile`` using the inline method, which we haven't
+  used before. It's very similar to the ``with ... as`` expression, but when
+  we're done with the file we simply call ``infile.close()`` to close it
+  properly. 
+
+  * The main reason I did this was so that even after closing the file, the
+    ``lines`` list would be in scope for the program. You could also nest two
+    ``with ... as`` expressions inside each other, but I thought that would be
+    less elegant for this case.
+
+* Then, we open our output file (overwriting the previous contents), and print
+  out each item in the list of lines. Notice that we put a ``\n`` at the end of
+  each line, just as we needed to in the previous example.
+
+.. _sec-conclusion:
+
+Conclusion 
+==========
+
+With that, we've covered the basics of reading from files and writing to them in
+Python! Next, we'll cover how to use Pandas to do these things much more easily
+in one specific case.
