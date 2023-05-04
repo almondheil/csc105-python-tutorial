@@ -11,9 +11,11 @@ Welcome to Ray's Python Tutorial!
 
 .. toctree::
    :caption: Contents 
+   :maxdepth: 2
 
    getting-started.rst
    basic-file-io.rst
    pandas-read-csv.rst
    plotting-data.rst
+   resources.rst
 
