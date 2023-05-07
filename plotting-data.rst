@@ -140,7 +140,65 @@ can download :download:`sorting_algorithms.csv <code/sorting_algorithms.csv>` by
 clicking on that piece of text. Once it's uploaded to Replit, we can start out
 looking at the data and figuring out how to plot it.
 
-TODO NEED TO WRITE THIS WHOLE DEALIO WHEEE I HATE MYSELF FOR THIS SOMETIMES
+We did a good amount of stuff with this data in class, but the one thing that I
+think is particularly visually entertaining is just a line plot of how insertion
+sort compares on different sizes of arrays with different initial orderings. For
+that, we'll need to plot multiple lines with a function somewhat like this one:
+
+.. code-block:: python
+
+   def plot_insertion_sort():
+       data = pandas.read_csv("sorting_algorithms.csv")
+
+       # Call plot three times to 
+       plt.plot(data["Array Size"], data["Insertion (Ascending)"])
+       plt.plot(data["Array Size"], data["Insertion (Descending)"])
+       plt.plot(data["Array Size"], data["Insertion (Random)"])
+
+       # Set the titles, as usual
+       plt.xlabel("Size of Array")
+       plt.ylabel("Average Number of Steps")
+       plt.title("Insertion Sort Time Complexity by Array Size")
+
+       # And show it!
+       plt.show()
+
+When you run this, it'll make a graph that should look something like this:
+
+.. image:: images/insertion_no_labels.png
+
+This is fine, but it's hard to tell which data is which. You could definitely
+intuit it from how you know the algorithm works, but let's add a legend to clear
+everything up. For this case, we'll handle that like so:
+
+.. code-block:: python
+
+   def plot_insertion_sort():
+       data = pandas.read_csv("sorting_algorithms.csv")
+
+       # Call plot three times to 
+       plt.plot(data["Array Size"], data["Insertion (Ascending)"])
+       plt.plot(data["Array Size"], data["Insertion (Descending)"])
+       plt.plot(data["Array Size"], data["Insertion (Random)"])
+
+       # Set the titles, as usual
+       plt.xlabel("Size of Array")
+       plt.ylabel("Average Number of Steps")
+       plt.title("Insertion Sort Time Complexity by Array Size")
+      
+       # Add the legend with these labels
+       plt.legend(["Ascending Order", "Descending Order", "Random Order"])
+
+       # And show it!
+       plt.show()
+
+There definitely exist more sophisticated ways to show a legend (after all, we
+have the names of everything stored in the Pandas dataframe already), but in
+this case we'll stick with manually matching the order. As a little bonus, that
+lets us customize things to what the plot is showing, rather than the broader
+scope of the whole collection of data.
+
+.. image:: images/insertion_labels.png
 
 More Possibilities with Matplotlib
 ===================================
@@ -168,4 +226,6 @@ and the `3D surface plot
 Conclusion
 ==========
 
-TODO write 
+That concludes this tutorial! In the next section you'll find links to some
+external resources I find really helpful whenever I need to do plotting in
+Python, and I hope they'll be helpful to you!
