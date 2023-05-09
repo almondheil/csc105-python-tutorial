@@ -41,11 +41,28 @@ how to create a new Repl if you haven't done so already!
 #. Choose the Python template, and give it whatever sort of title you want. 
    Maybe ``totally-amazing-python-tutorial``?
 
-For now we won't create any files, as I'll have you use a different file for
-each upcoming section to keep everything a little organized.
+Because of the limitations of Replit, I'll have you writing all of these
+functions in your ``main.py``. For now, just add two imports to the top of the file
+so we don't have to deal with them more.
 
-Now, you should be all set up to start reading files in Python! Move onto the
-next section to jump into how we can start off with file I/O.
+.. code-block:: python
+
+   import pandas as pd
+   import matplotlib.pyplot as plt
+
+Here, we're using the ``as`` keyword in order to give the packages a shorter name
+that we can refer to to avoid typing the entire, long name. That'll be helpful
+later on, but for now it'll just sit there.
+
+The first time you run your program once the imports are added, it'll take a
+minute to install everything for you. Then you should be good to go!
+
+Throughout the tutorial, I mention running your code but don't go into how
+exactly that will work. I chose to do things pretty much exactly the way we did
+in class, where you'll press the run button to load up the functions in
+``main.py`` and then call the functions manually from the console.
+
+With all that done, let's get started with basic file I/O!
 
 .. _matplotlib: https://matplotlib.org/
 

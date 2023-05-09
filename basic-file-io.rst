@@ -4,7 +4,7 @@
 Basic File I/O
 ==============
 
-.. _sec-introduction:
+.. _sec-basic-file-io-introduction-and-motivatioj:
 
 Introduction and Motivation
 ===========================
@@ -30,17 +30,18 @@ Reading a File
 ==============
 
 To start off, make a new file in your Replit and name it something like
-``plaintext-data.txt``. As shown in the file extension, this file is meant to
-hold normal text with no fancy formatting. Then, just enter some sort of data
-into the file, to make it look like a list of things with one item on each line.
-I've made mine a list of fake emotions.
+``plaintext-data.txt``. You can do this by pressing the button in the files
+pane that looks like a page with a plus icon, then typing the filename. As
+shown in the file extension, this file is meant to hold normal text with no
+fancy formatting. Then, just enter some sort of data into the file, to make it
+look like a list of things with one item on each line. I've made mine a list of
+absurd emotions.
 
 .. literalinclude:: code/plaintext_data.txt 
 
-Once that's done, we're going to make a program that will print out a random one
-of those items. Make a new Python file called ``basic_file_io.py`` or something
-along those lines, and start off with the following outline for a function
-called ``read_file()``:
+Once that's done, we're going to make a function that will print out each item
+in the file. Make a new function called ``read_file()`` and give it the
+following starting code.
 
 .. literalinclude:: code/reading_text_0.py 
    :language: python 
@@ -101,18 +102,25 @@ When I run this file, I get the following output:
 
 Now, it might be more obvious why this is happening--there is still a newline
 character in the ``line`` variable that we print out, and that means that a new
-line starts right after it. So, how can we fix that?
+line starts right after it where we don't want it to.
 
-Here's my suggestion for one way to not print out that newline. Since we know
-that the newline is always at the end of the string we *want* to print, it's
-not too difficult to take advantage of Python's list indexing to use all except
-the last character in the string. Here's how that looked when I did it:
+To fix that, one possible solution is to only print out the part of the line
+that doesn't contain the newline, or everything except the last character. To do
+that, we just need to use Python's list indexing like so:
 
 .. literalinclude:: code/reading_text_final.py 
    :language: python 
    :emphasize-lines: 5
 
-Now when we run the code, it works the way we expect it to. Hurrah!
+Now, this will print everything out correctly, with exactly one entry per line:
+
+.. code-block:: text
+
+  The feeling of sturror is a feeling that really exists.
+  The feeling of gleeb is a feeling that really exists.
+  The feeling of ermity is a feeling that really exists.
+  The feeling of frabjousness is a feeling that really exists.
+  The feeling of flasure is a feeling that really exists.
 
 .. _sec-writing-to-a-file:
 
@@ -169,12 +177,3 @@ here's a breakdown of what it does anyway.
 * Then, we open our output file (overwriting the previous contents), and print
   out each item in the list of lines. Notice that we put a ``\n`` at the end of
   each line, just as we needed to in the previous example.
-
-.. _sec-conclusion:
-
-Conclusion 
-==========
-
-With that, we've covered the basics of reading from files and writing to them in
-Python! Next, we'll cover how to use Pandas to do these things much more easily
-in one specific case.

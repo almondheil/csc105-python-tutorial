@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-import pandas
+import pandas as pd
 
 def plot_insertion_sort():
-    data = pandas.read_csv("sorting_algorithms.csv")
+    data = pd.read_csv("sorting_algorithms.csv")
 
     # Call plot three times to make three different lines
     plt.plot(data["Array Size"], data["Insertion (Ascending)"])
@@ -24,7 +24,7 @@ def plot_insertion_sort():
 
 
 def plot_merge_sort():
-    data = pandas.read_csv("sorting_algorithms.csv")
+    data = pd.read_csv("sorting_algorithms.csv")
 
     # Call plot three times to make three different lines
     plt.plot(data["Array Size"], data["Merge (Ascending)"])

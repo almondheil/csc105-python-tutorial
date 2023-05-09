@@ -2,10 +2,7 @@
 Resources and Further Reading
 =============================
 
-Well, that's everything I had to talk about here! I've decided to dedicate this
-last chapter just to a few resources that I find really helpful--some of them
-are from within the book and some are further reading, but I wanted to just put
-them all in one place.
+Here are some helpful resources that can help you extend your knowledge of Python 
 
 * `Pandas' documentation <https://pandas.pydata.org/docs/>`_ is a good resource
   if you're stuck with something on Dataframes, or want to find out more about
@@ -24,6 +21,3 @@ them all in one place.
   across the documentation for the other projects in this list, because it's so
   fantastic at performing operations on whole lists at once and at generating
   fake data to plot.
-
-With that, I'm pretty much finished with this little tutorial! I hope you found
-it helpful!

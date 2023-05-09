@@ -4,7 +4,7 @@
 Plotting Data with Matplotlib
 =============================
 
-.. _sec-introduction-and-motivation:
+.. _sec-plotting-data-introduction-and-motivation:
 
 Introduction and Motivation
 ===========================
@@ -12,7 +12,6 @@ Introduction and Motivation
 In the previous chapter we used the CSV utilities that the Pandas library
 provides to read a CSV and select certain parts of its data, and we've finally
 built up to the point of plotting that data and making it display nicely.
-
 
 .. _sec-how-does-matplotlib-work:
 
@@ -30,7 +29,7 @@ follows:
 
 #. Change features of the graph while it is still loading
 
-#. Show or export the final graph
+#. Show the final graph
 
 .. _sec-plotting-different-charts:
 
@@ -38,36 +37,38 @@ Simple charts with Fake Data
 ============================
 
 First, I want to do a couple charts on fake data to show the very basics of how
-we can use Matplotlib. Just download :download:`simple_data.csv
-<code/simple_data.csv>` (click that text) and upload it to your Replit using the
-three dots menu in the corner of the file browser pane.
+we can use Matplotlib. Just **download** :download:`simple_data.csv
+<code/simple_data.csv>` (by clicking that text) and upload it to your Replit
+using the three dots menu in the corner of the file browser pane.
 
 Before plotting, go ahead and take a look at what's inside that file by opening
 it in Replit. As you can see it's pretty simple, it keeps track of different
 decades and their ability to be the future. Why, you ask? I just wanted an
 obvious and stupid trend to follow.
 
-Now, let's throw together a python script that will plot this for us. Go ahead
-and start a new python file in Replit, something along the lines of
-``plotting.py``. Let's start off with this outline for a function:
+Let's make a new function that will plot the data from this CSV file start off
+with code that looks like this.
 
 .. code-block:: python
-
-   import pandas as pd
-   import matplotlib.pyplot as plt
 
    def plot_fake_data():
       # Read in the CSV as usual
       data = pd.read_csv("simple_data.csv")
 
       # Tell Matplotlib to make a line plot and specify which data to use
-      # "Year" will be the X axis
+      # "Year" will be the X axis, and futuristic-ness will be the Y axis
       plt.plot(data["Year"], data["General Futuristic-ness"])
 
-      # Show the plot
+      # Show the plot when we're done
       plt.show()
 
-If you now run this code, you should get the following somewhat underwhelming graph.
+If you now run this code, you should get the following somewhat underwhelming
+graph.
+
+.. note:: 
+
+   If you can't see your graph in Replit for any reason, either navigate to the
+   "Output" pane or create a new tab and assign it to the Output pane.
 
 .. image:: images/simple_fake_plot.png
 
@@ -81,14 +82,12 @@ By the way, I've removed the imports from this code block to keep it all
 cleaner. You'll still need the imports in your own file, of course!
 
 .. code-block:: python
-   :emphasize-lines: 9-12
+   :emphasize-lines: 8-10
 
    def plot_fake_data():
-      # Read in the CSV as usual
       data = pd.read_csv("simple_data.csv")
 
-      # Tell Matplotlib to make a line plot and specify which data to use
-      # "Year" will be the X axis
+      # Plot the data simply
       plt.plot(data["Year"], data["General Futuristic-ness"])
 
       # Set axis labels and title
@@ -96,7 +95,6 @@ cleaner. You'll still need the imports in your own file, of course!
       plt.ylabel("General Futuristic-ness")
       plt.title("The Future Comes for Us All")
 
-      # Show the plot
       plt.show()
 
 You can run the program again to see how this changes things, but I want to add
@@ -106,14 +104,12 @@ futuristic-ness of a decade is exactly equal to zero. For that, we can use the
 command ``plt.axhline`` as follows.
 
 .. code-block:: python
-   :emphasize-lines: 15 
+   :emphasize-lines: 13 
 
    def plot_fake_data():
-      # Read in the CSV as usual
       data = pd.read_csv("simple_data.csv")
 
-      # Tell Matplotlib to make a line plot and specify which data to use
-      # "Year" will be the X axis
+      # Plot the data simply
       plt.plot(data["Year"], data["General Futuristic-ness"])
 
       # Set axis labels and title
@@ -124,7 +120,6 @@ command ``plt.axhline`` as follows.
       # Horizontal line at y = 0
       plt.axhline(0, color="red")
 
-      # Show the plot
       plt.show()
 
 Now, your plot will look like this! Still basic, but much easier to understand.
@@ -136,7 +131,7 @@ Using Real Data
 
 I have one particular example of plotting real data that I want to walk through,
 based on our sorting algorithms lab from earlier this semester. Once again, you
-can download :download:`sorting_algorithms.csv <code/sorting_algorithms.csv>` by
+can **download** :download:`sorting_algorithms.csv <code/sorting_algorithms.csv>` by
 clicking on that piece of text. Once it's uploaded to Replit, we can start out
 looking at the data and figuring out how to plot it.
 
@@ -148,9 +143,9 @@ that, we'll need to plot multiple lines with a function somewhat like this one:
 .. code-block:: python
 
    def plot_insertion_sort():
-       data = pandas.read_csv("sorting_algorithms.csv")
+       data = pd.read_csv("sorting_algorithms.csv")
 
-       # Call plot three times to 
+       # Call plot three times to put three lines on the chart
        plt.plot(data["Array Size"], data["Insertion (Ascending)"])
        plt.plot(data["Array Size"], data["Insertion (Descending)"])
        plt.plot(data["Array Size"], data["Insertion (Random)"])
@@ -172,16 +167,17 @@ intuit it from how you know the algorithm works, but let's add a legend to clear
 everything up. For this case, we'll handle that like so:
 
 .. code-block:: python
+   :emphasize-lines: 15
 
    def plot_insertion_sort():
-       data = pandas.read_csv("sorting_algorithms.csv")
+       data = pd.read_csv("sorting_algorithms.csv")
 
-       # Call plot three times to 
+       # Plot data
        plt.plot(data["Array Size"], data["Insertion (Ascending)"])
        plt.plot(data["Array Size"], data["Insertion (Descending)"])
        plt.plot(data["Array Size"], data["Insertion (Random)"])
 
-       # Set the titles, as usual
+       # Add titles and things
        plt.xlabel("Size of Array")
        plt.ylabel("Average Number of Steps")
        plt.title("Insertion Sort Time Complexity by Array Size")
@@ -189,7 +185,6 @@ everything up. For this case, we'll handle that like so:
        # Add the legend with these labels
        plt.legend(["Ascending Order", "Descending Order", "Random Order"])
 
-       # And show it!
        plt.show()
 
 There definitely exist more sophisticated ways to show a legend (after all, we
@@ -220,12 +215,3 @@ and the `3D surface plot
    into them here, but you might notice that some of the examples are able to
    apply functions or random values to entire arrays at once. That's the main
    reason they're so good for these examples.
-
-.. _sec-conclusion:
-
-Conclusion
-==========
-
-That concludes this tutorial! In the next section you'll find links to some
-external resources I find really helpful whenever I need to do plotting in
-Python, and I hope they'll be helpful to you!
