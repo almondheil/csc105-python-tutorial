@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Ray's Python Tutorial"
-copyright = '2023, Ray Heil'
-author = 'Ray Heil'
+project = "Almond's Python Tutorial"
+copyright = '2023, Almond Heil'
+author = 'Almond Heil'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

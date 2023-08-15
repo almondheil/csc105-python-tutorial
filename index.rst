@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Ray's Python Tutorial!
+Welcome to Almond's Python Tutorial!
 =================================
 
-:Author: Ray Heil <heilray@grinnell.edu>
+:Author: Almond Heil <heilalmond@grinnell.edu>
 :Published Date: |today|
 
 .. toctree::
